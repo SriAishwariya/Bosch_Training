@@ -39,6 +39,8 @@ namespace BankApp
 
         
     }
+    class delValidation{
+        
     class List
     {
         public void callList()
@@ -47,6 +49,8 @@ namespace BankApp
             List<Customers> cust = new List<Customers>();
             string fileName = @"D:\userDetails.txt";
             using (FileStream fs = File.Create(fileName)) ;
+            Console.WriteLine("---------------------------------------------------");
+            Console.WriteLine("Step-2:Enter the user details");
         l: Console.WriteLine("Please provide name:");
             string uName = Console.ReadLine();
             Console.WriteLine("Enter gender");
@@ -64,7 +68,8 @@ namespace BankApp
                 goto j;
             }
             else { goto l; }
-        j: Console.WriteLine("Printing the customers details");
+            j:Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("Printing the customers details");
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("|Name         ||         Gender         ||         Location  ");
             Console.WriteLine("-----------------------------------------------------");
@@ -78,6 +83,11 @@ namespace BankApp
 
         }
     }
+    public delegate int valDelegate(long n);
+    class Global
+    {
+        public static int myCount;
+    }
     class Program
     {
         static void Main(string[] args)
@@ -90,7 +100,38 @@ namespace BankApp
             c:Console.WriteLine("---Choose the type of action---");
             Console.WriteLine("---Options---\n1 for Savings Account\n2 for Current Account\n3 for ChildCare Account\n4 for entering user details\n5 for exit\nEnter: ");
             int ch = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("-----------------------------------------------------\n");
+
+            Console.WriteLine("Step-1:Enter your details\n");
+            Console.WriteLine("Enter your name");
+            string userName = Console.ReadLine();
+            h:Console.WriteLine("Enter your phoneNo");
+            long phoneNo = Convert.ToInt64(Console.ReadLine());
+            int noOfDigits(long n)
+            {
+                int dcount = 0;
+                while (n != 0)
+                {
+
+                    n = n / 10;
+                    dcount++;
+                }
+                
+                Global.myCount = dcount;
+                return dcount;
+            }
             
+            valDelegate val = new valDelegate(noOfDigits);
+            val.Invoke(phoneNo);
+            
+            if (Global.myCount != 10)
+            {
+                Console.WriteLine("Please enter a valid 10-digit phone number");
+                goto h;
+            }
+            
+            Console.WriteLine("Enter your Location");
+            string location = Console.ReadLine();
             switch (ch)
             {
                 case 1:
@@ -336,4 +377,5 @@ namespace BankApp
         }
        
     }
+}
 }
