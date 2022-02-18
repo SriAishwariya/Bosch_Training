@@ -90,14 +90,7 @@ namespace BankApp
             c: Console.WriteLine("---Choose the type of account for deposit---");
             Console.WriteLine("---Options---\n1 for Savings Account\n2 for Current Account\n3 for ChildCare Account\n4 for entering user details\n5 for exit\nEnter: ");
             int ch = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter user name");
-            string userName = Console.ReadLine();
-            Console.WriteLine("Enter user phoneNo");
-            long phoneNo = Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter user Location");
-            string location = Console.ReadLine();
-            Console.WriteLine("Please verify if your details are correct:");
-            Console.WriteLine("Name: {0}\nPhoneNo: {1}\nLocation: {2}", userName, phoneNo, location);
+            
             switch (ch)
             {
                 case 1:
