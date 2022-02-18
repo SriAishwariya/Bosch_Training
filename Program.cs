@@ -338,7 +338,9 @@ namespace BankApp
                     Console.WriteLine("Please enter a valid choice among 1,2,3 or 4");
                     break;
             }
+            Console.ReadKey();
 
         }
+       
     }
 }
