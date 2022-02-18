@@ -141,7 +141,7 @@ namespace BankApp
                         else if(dep1 <=100000 )
                         {
                             accBal = accBal+dep1;
-                            Console.WriteLine("The balance in your account is {0}", accBal);
+                            Console.WriteLine("The balance in your account is Rs.{0}", accBal);
                             Console.WriteLine("-----------------------------------");
                             a: Console.WriteLine("Do you want to perform another transaction?\nEnter y or n");
                             char i = Convert.ToChar(Console.ReadLine());
@@ -244,7 +244,7 @@ namespace BankApp
                             {
                                 Console.WriteLine("Your daily withdrawal limit has exceeded 3");
                                 Console.WriteLine("Deducting Rs.500 for each transaction that has exceeded the daily limit..");
-                                Console.WriteLine("Your current balance is {0}", accBal - (count * 500));
+                                
 
                             }
 
@@ -312,7 +312,7 @@ namespace BankApp
                             {
                                 Console.WriteLine("Your daily withdrawal limit has exceeded 3");
                                 Console.WriteLine("Deducting Rs.500 for each transaction that has exceeded the daily limit..");
-                                Console.WriteLine("Your current balance is {0}", accBal - (count * 500));
+                                
 
                             }
 
