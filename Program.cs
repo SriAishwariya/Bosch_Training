@@ -39,7 +39,7 @@ namespace BankApp
 
         
     }
-    class delValidation{
+    
         
     class List
     {
@@ -378,4 +378,4 @@ namespace BankApp
        
     }
 }
-}
+
