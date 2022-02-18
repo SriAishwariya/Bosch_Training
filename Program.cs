@@ -87,7 +87,7 @@ namespace BankApp
             int count = 1;
             long accBal=0;
             
-            c: Console.WriteLine("---Choose the type of account for deposit---");
+            c:Console.WriteLine("---Choose the type of action---");
             Console.WriteLine("---Options---\n1 for Savings Account\n2 for Current Account\n3 for ChildCare Account\n4 for entering user details\n5 for exit\nEnter: ");
             int ch = Convert.ToInt32(Console.ReadLine());
             
@@ -108,19 +108,9 @@ namespace BankApp
                     break;
 
             }
-            Console.WriteLine("Enter y if details are correct or n if not");
-            char c = Convert.ToChar(Console.ReadLine());
-            if (c == 'y')
-            {
-                goto s;
-                
-            }
-            else
-            {
-                goto c;
-            }
+            
 
-            s: switch (ch)
+            switch (ch)
             {
                 case 1:
                     g: Console.WriteLine("Enter the amount to be deposited\nThe daily limit for Savings Account is Rs.100000");
@@ -131,7 +121,7 @@ namespace BankApp
                         {
                             throw new LimitExceeded();
                         }
-                        else if(dep1 <=100000 )
+                        if(dep1 <=100000 )
                         {
                             accBal = accBal+dep1;
                             Console.WriteLine("The balance in your account is Rs.{0}", accBal);
@@ -141,13 +131,13 @@ namespace BankApp
                             
                             if (i == 'y' && count<=3)
                             { 
-                                Console.WriteLine("Enter 1 for deposit or 2 for withdrawal");
+                                w:Console.WriteLine("Enter 1 for deposit or 2 for withdrawal");
                                 int n = Convert.ToInt32(Console.ReadLine());
                                 if (n == 1)
                                 {
                                     goto g;
                                 }
-                                else
+                                else if(n==2)
                                 {
                                     Console.WriteLine("Enter the amount of withdrawal");
                                     long amt = Convert.ToInt64(Console.ReadLine());
@@ -166,6 +156,11 @@ namespace BankApp
                                     }
 
                                 }
+                                else{
+                                    Console.WriteLine("Invalid input--Enter only 1 or 2");
+                                    goto w;
+                                }
+                                                      
                             }
                             else
                             {
@@ -175,11 +170,7 @@ namespace BankApp
                             }
                             
                         }
-                        else
-                        {
-                            Console.WriteLine("Your daily withdrawal limit has exceeded 3");
-                            
-                        }
+                        
                         
                     }
                     catch (LimitExceeded b)
@@ -197,7 +188,7 @@ namespace BankApp
                         {
                             throw new LimitExceeded();
                         }
-                        else if (dep2 <= 200000)
+                        if (dep2 <= 200000)
                         {
                             accBal = dep2;
                             Console.WriteLine("The balance in your account is {0}", accBal);
@@ -206,13 +197,13 @@ namespace BankApp
                             char i = Convert.ToChar(Console.ReadLine());
                             if (i == 'y' && count<=3)
                             {
-                                Console.WriteLine("Enter 1 for deposit or 2 for withdrawal");
+                                w:Console.WriteLine("Enter 1 for deposit or 2 for withdrawal");
                                 int n = Convert.ToInt32(Console.ReadLine());
                                 if (n == 1)
                                 {
                                     goto g;
                                 }
-                                else
+                                else if(n==2)
                                 {
                                     Console.WriteLine("Enter the amount of withdrawal");
                                     long amt = Convert.ToInt64(Console.ReadLine());
@@ -232,21 +223,21 @@ namespace BankApp
 
                                     
                                 }
+                                else{
+                                    Console.WriteLine("Invalid input--Enter only 1 or 2");
+                                    goto w;
+                                }
                             }
                             else
                             {
                                 Console.WriteLine("Your daily withdrawal limit has exceeded 3");
                                 Console.WriteLine("Deducting Rs.500 for each transaction that has exceeded the daily limit..");
-                                
+                                Console.WriteLine("Your current balance is {0}", accBal - (count * 500));
 
                             }
 
                         }
-                        else
-                        {
-                            Console.WriteLine("Your daily withdrawal limit has exceeded 3");
-
-                        }
+                        
 
                     }
                     catch (LimitExceeded b)
@@ -265,7 +256,7 @@ namespace BankApp
                         {
                             throw new LimitExceeded();
                         }
-                        else if (dep3 <= 100000 )
+                        if (dep3 <= 100000 )
                         {
                             accBal = dep3;
                             Console.WriteLine("The balance in your account is {0}", accBal);
@@ -274,13 +265,13 @@ namespace BankApp
                             char i = Convert.ToChar(Console.ReadLine());
                             if (i == 'y' && count<=3)
                             {
-                                Console.WriteLine("Enter 1 for deposit or 2 for withdrawal");
+                                w:Console.WriteLine("Enter 1 for deposit or 2 for withdrawal");
                                 int n = Convert.ToInt32(Console.ReadLine());
                                 if (n == 1)
                                 {
                                     goto g;
                                 }
-                                else
+                                else if(n==2)
                                 {
                                     Console.WriteLine("Enter the amount of withdrawal");
                                     long amt = Convert.ToInt64(Console.ReadLine());
@@ -300,22 +291,21 @@ namespace BankApp
 
                                     
                                 }
+                                else{
+                                    Console.WriteLine("Invalid input--Enter only 1 or 2");
+                                    goto w;
+                                }
                             }
                             else
                             {
                                 Console.WriteLine("Your daily withdrawal limit has exceeded 3");
                                 Console.WriteLine("Deducting Rs.500 for each transaction that has exceeded the daily limit..");
-                                
+                                Console.WriteLine("Your current balance is {0}", accBal - (count * 500));
 
                             }
 
                         }
-                        else
-                        {
-                            Console.WriteLine("Your daily withdrawal limit has exceeded 3");
-
-                        }
-
+                        
                     }
                     catch (LimitExceeded b)
                     {
@@ -325,6 +315,14 @@ namespace BankApp
                     break;
                 case 4:
                     li.callList();
+                    Console.WriteLine("Do you want to perform any other action..Enter y or n");
+                    char choice = Convert.ToChar(Console.ReadLine());
+                    if(choice=='y')
+                    {
+                        goto c;
+                    }
+                    
+                    
                     break;
                 case 5:
                     break;
